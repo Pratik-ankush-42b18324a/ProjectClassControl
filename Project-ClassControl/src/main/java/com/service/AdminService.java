@@ -25,6 +25,8 @@ public interface AdminService {
 
 	List<Course> getAllCourse();
 
+	
+
 	// methods for managing classrooms
 
 	public Classroom createClassroom(int courseId, int teacherId, String classroomName, String classroomDescription);
@@ -34,6 +36,8 @@ public interface AdminService {
 	public void deleteClassroom(int classroomId);
 
 	List<Classroom> getAllClassrooms();
+
+	
 
 	// methods for managing teacher:
 
@@ -46,6 +50,8 @@ public interface AdminService {
 	public void sendTeacherLoginCredentials(Teacher teacher);
 
 	public List<Teacher> getAllTeachers();
+
+	
 	// methods for managing student:
 
 	List<Student> getAllStudents();
