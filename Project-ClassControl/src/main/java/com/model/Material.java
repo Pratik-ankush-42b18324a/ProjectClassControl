@@ -37,7 +37,6 @@ public class Material {
 
 	public Material() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Material(Long material_Id, String material_Title, byte[] material_File, MaterialType materialType,
