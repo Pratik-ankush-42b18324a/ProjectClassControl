@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.model.Teacher;
 
+@Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
 	 
     @Query("SELECT t FROM Teacher t WHERE t.teacher_Email = :teacher_Email")
