@@ -86,8 +86,6 @@ public class Submission {
 
 	public void setAssignment(Assignment assignment) {
 		this.assignment = assignment;
-	}
-
-	
+	}	
 
 }
