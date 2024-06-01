@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import com.model.Classroom;
 import com.model.Course;
 
+@Repository
 public interface ClassroomRepository extends JpaRepository<Classroom, Integer> {
 	List<Classroom> findByCourse(Course course);
 
