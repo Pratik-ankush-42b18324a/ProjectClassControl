@@ -14,7 +14,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Submission {
 	
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int submission_Id;
 
@@ -22,7 +22,7 @@ public class Submission {
 
     @Column(length=1000000)
     @Lob
-	private byte[] assignment_SubmissionFile;
+    private byte[] assignment_SubmissionFile;
     
 
     @ManyToOne
@@ -33,12 +33,12 @@ public class Submission {
     @JoinColumn(name = "assignment_id")
     private Assignment assignment;
 
-	public Submission() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public Submission() {
+	super();
+	    
+    }
 
-	public Submission(int submission_Id, LocalDateTime submissionDateTime, byte[] assignment_SubmissionFile,
+    public Submission(int submission_Id, LocalDateTime submissionDateTime, byte[] assignment_SubmissionFile,
 			Student student, Assignment assignment) {
 		super();
 		this.submission_Id = submission_Id;
