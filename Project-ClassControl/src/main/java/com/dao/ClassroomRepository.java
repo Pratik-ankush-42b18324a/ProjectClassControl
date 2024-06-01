@@ -11,6 +11,7 @@ import com.model.Course;
 
 @Repository
 public interface ClassroomRepository extends JpaRepository<Classroom, Integer> {
+	
 	List<Classroom> findByCourse(Course course);
 
 	@Query("SELECT c FROM Classroom c WHERE c.teacher.teacher_Id = :teacherId")
