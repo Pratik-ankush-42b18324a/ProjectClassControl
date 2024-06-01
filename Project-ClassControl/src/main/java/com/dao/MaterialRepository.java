@@ -11,6 +11,7 @@ import com.model.Assignment;
 import com.model.Material;
 import com.model.Student;
 
+@Repository
 public interface MaterialRepository extends JpaRepository<Material, Long> {
 
 	@Query("SELECT m FROM Material m WHERE m.classroom.classroom_Id = :classroomId")
