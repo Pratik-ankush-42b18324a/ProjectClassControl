@@ -27,7 +27,7 @@ public class AdminServiceImplementation implements AdminService {
 	private NotificationService notificationService;
 
 	/****************************************************************************************************************************************
-	 * Admin Registration & Login:
+	 * Admin Registration 
 	 *****************************************************************************************************************************************/
 
 	@Autowired
