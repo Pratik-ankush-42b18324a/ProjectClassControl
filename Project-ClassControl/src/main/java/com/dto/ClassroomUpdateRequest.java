@@ -4,7 +4,6 @@ public class ClassroomUpdateRequest {
 
 	private Integer classroomId;
 	private Integer courseId;
-
 	private Integer teacherId;
 	private String classroomName;
 	private String classroomDescription;
