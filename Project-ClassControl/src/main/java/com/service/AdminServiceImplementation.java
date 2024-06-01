@@ -45,13 +45,6 @@ public class AdminServiceImplementation implements AdminService {
 
 	}
 
-	/*
-	 * public boolean adminLogin(String admin_Username, String admin_Password) {
-	 * Admin admin = adminRepository.findByAdmin_Username(admin_Username); return
-	 * admin != null && admin.getAdmin_Password().equals(admin_Password); }
-	 * 
-	 */
-
 	/*********************************************************************************************************************************************
 	 * Course Creation, Updation and Deletion By Admin:
 	 *********************************************************************************************************************************************/
@@ -59,11 +52,7 @@ public class AdminServiceImplementation implements AdminService {
 	@Autowired
 	private CourseRepository courseRepository;
 
-	@Override
-	public List<Course> getAllCourse() {
-
-		return courseRepository.findAll();
-	}
+	
 
 	@Override
 	public Course createCourse(Course course) {
@@ -97,6 +86,13 @@ public class AdminServiceImplementation implements AdminService {
 		return existingCourse;
 	}
 
+	@Override
+	public List<Course> getAllCourse() {
+
+		return courseRepository.findAll();
+	}
+
+	
 	/*********************************************************************************************************************************************
 	 * Classroom Creation, Updation and Deletion
 	 ********************************************************************************************************************************************/
@@ -104,11 +100,7 @@ public class AdminServiceImplementation implements AdminService {
 	@Autowired
 	private ClassroomRepository classroomRepository;
 
-	@Override
-	public List<Classroom> getAllClassrooms() {
-
-		return classroomRepository.findAll();
-	}
+	
 
 	@Override
 	@Transactional
@@ -154,6 +146,13 @@ public class AdminServiceImplementation implements AdminService {
 		classroomRepository.delete(classroom);
 	}
 
+	@Override
+	public List<Classroom> getAllClassrooms() {
+
+		return classroomRepository.findAll();
+	}
+	
+
 	/*********************************************************************************************************************************************
 	 * Generate Password, Send Credentials, Add & Remove Teacher From Course
 	 *********************************************************************************************************************************************/
@@ -165,6 +164,7 @@ public class AdminServiceImplementation implements AdminService {
 		return teacherRepository.findAll();
 	}
 
+	
 	@Override
 	public void generatePasswordForTeacher(int teacherId) {
 		Teacher teacher = new Teacher();
@@ -241,6 +241,8 @@ public class AdminServiceImplementation implements AdminService {
 		notificationService.sendEmail(to, subject, body);
 		
 	}
+
+	
 
 	/**************************************************************************************************************************************************
 	 * Generate Password, Send Credentials, Add & Remove Student From Course
