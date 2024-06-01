@@ -57,9 +57,11 @@ public class TeacherController {
 		try {
 			teacherService.deleteMaterial(materialId);
 			return ResponseEntity.ok("Material deleted successfully.");
-		} catch (IllegalArgumentException e) {
+		} 
+		catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Material not found with id: " + materialId);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete material.");
 		}
 	}
@@ -84,9 +86,11 @@ public class TeacherController {
 			LocalDateTime newDeadlineDateTime = LocalDateTime.parse(newDeadline, DateTimeFormatter.ISO_DATE_TIME);
 			teacherService.extendAssignmentDeadline(assignmentId, newDeadlineDateTime);
 			return ResponseEntity.ok("Assignment deadline extended successfully.");
-		} catch (IllegalArgumentException e) {
+		} 
+		catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Assignment not found with id: " + assignmentId);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 					.body("Failed to extend assignment deadline.");
 		}
