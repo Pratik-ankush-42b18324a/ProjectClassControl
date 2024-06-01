@@ -22,6 +22,7 @@ import com.model.Student;
 import com.service.StudentService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class StudentController {
 
 	@Autowired
