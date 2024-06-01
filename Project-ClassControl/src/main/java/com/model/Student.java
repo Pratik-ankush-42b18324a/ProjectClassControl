@@ -31,9 +31,9 @@ public class Student {
 	private List<Classroom> classrooms;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id")
-    private Course course;
+   	@ManyToOne(fetch = FetchType.LAZY)
+   	@JoinColumn(name = "course_id")
+   	private Course course;
 	
 	public Student() {
 		super();
@@ -114,9 +114,6 @@ public class Student {
 
 	public void setCourse(Course course) {
 		this.course = course;
-	}
-
-	
-	
+	}	
 	
 }
