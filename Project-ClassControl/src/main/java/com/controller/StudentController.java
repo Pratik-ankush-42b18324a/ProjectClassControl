@@ -62,25 +62,29 @@ public class StudentController {
 	
 	@PostMapping("/{assignmentId}/studentSubmitAssignment")
 	public ResponseEntity<String> uploadCompletedAssignment(@RequestParam("file") MultipartFile file, @PathVariable int assignmentId) {
-	    try {
-	        studentService.uploadCompletedAssignment(file, assignmentId);
-	        return ResponseEntity.ok("Assignment submitted successfully.");
-	    } catch (IllegalArgumentException e) {
-	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Assignment not found with id: " + assignmentId);
-	    } catch (IOException e) {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to process the uploaded file.");
-	    }
+		   try {
+		        studentService.uploadCompletedAssignment(file, assignmentId);
+		        return ResponseEntity.ok("Assignment submitted successfully.");
+		    } 
+		    catch (IllegalArgumentException e) {
+		        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Assignment not found with id: " + assignmentId);
+		    } 
+		    catch (IOException e) {
+		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to process the uploaded file.");
+		    }
 	}
 
 	@DeleteMapping("/studentDeleteSubmittedAssignment/{submission_Id}")
-    public ResponseEntity<String> deleteSubmittedAssignment(@PathVariable int submission_Id) {
-        try {
-        	studentService.deleteSubmittedAssignment(submission_Id);
-            return ResponseEntity.ok("Submission deleted successfully with ID: " + submission_Id);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete submission.");
-        }
-    }
+        public ResponseEntity<String> deleteSubmittedAssignment(@PathVariable int submission_Id) {
+		try {
+	        	studentService.deleteSubmittedAssignment(submission_Id);
+	            return ResponseEntity.ok("Submission deleted successfully with ID: " + submission_Id);
+	        } 
+		catch (IllegalArgumentException e) {
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+	        } 
+		catch (Exception e) {
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete submission.");
+	        }
+    	}
 }
