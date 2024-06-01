@@ -30,7 +30,7 @@ import com.model.Teacher;
 import com.service.AdminService;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AdminController {
 
 	/*****************************************************************************************************************************/
@@ -67,18 +67,18 @@ public class AdminController {
 	}
 
 	@GetMapping("/getAllCourses")
-    public ResponseEntity<List<Course>> getAllCourses() {
-        List<Course> courses = adminService.getAllCourse();
-        return ResponseEntity.ok(courses);
-    }
+   	public ResponseEntity<List<Course>> getAllCourses() {
+        	List<Course> courses = adminService.getAllCourse();
+        	return ResponseEntity.ok(courses);
+   	}
 	
 	/**************************************************************************************************************************/
 
 	@GetMapping("/getAllClassrooms")
-    public ResponseEntity<List<Classroom>> getAllClassrooms() {
-        List<Classroom> classrooms = adminService.getAllClassrooms();
-        return ResponseEntity.ok(classrooms);
-    }
+	public ResponseEntity<List<Classroom>> getAllClassrooms() {
+	        List<Classroom> classrooms = adminService.getAllClassrooms();
+	        return ResponseEntity.ok(classrooms);
+	}
 	
 	@PostMapping("/classroom/create")
 	public ResponseEntity<Classroom> createClassroom(@RequestBody ClassroomCreateRequest request) {
@@ -108,10 +108,10 @@ public class AdminController {
 	private TeacherRepository teacherRepository;
 
 	@GetMapping("/getAllTeachers")
-    public ResponseEntity<List<Teacher>> getAllTeachers() {
-        List<Teacher> teachers = adminService.getAllTeachers();
-        return ResponseEntity.ok(teachers);
-    }
+    	public ResponseEntity<List<Teacher>> getAllTeachers() {
+        	List<Teacher> teachers = adminService.getAllTeachers();
+        	return ResponseEntity.ok(teachers);
+    	}
 	
 	
 	
@@ -149,27 +149,28 @@ public class AdminController {
 	}
 
 	@PostMapping("/admin/sendTeacherCredentials/{teacherId}")
-    public ResponseEntity<String> sendTeacherCredentials(@PathVariable int teacherId) {
-        Optional<Teacher> optionalTeacher = teacherRepository.findById(teacherId);
-        if (optionalTeacher.isPresent()) {
-        	adminService.sendTeacherLoginCredentials(optionalTeacher.get());
-            return ResponseEntity.ok("Teacher login credentials sent successfully to." );
-        } else {
-            throw new NoSuchElementException("Teacher not found with ID: " + teacherId);
-        }
-    }
-	/**************************************************************************************************************************/
-	
+    	public ResponseEntity<String> sendTeacherCredentials(@PathVariable int teacherId) {
+        	Optional<Teacher> optionalTeacher = teacherRepository.findById(teacherId);
+        		if (optionalTeacher.isPresent()) {
+        			adminService.sendTeacherLoginCredentials(optionalTeacher.get());
+            		return ResponseEntity.ok("Teacher login credentials sent successfully to." );
+        		} 
+			else {
+            			throw new NoSuchElementException("Teacher not found with ID: " + teacherId);
+        		     }		
+    	}
 
+	
+	/**************************************************************************************************************************/
 
 	@Autowired
 	private StudentRepository studentRepository;
 	
 	@GetMapping("/getAllStudents")
-    public ResponseEntity<List<Student>> getAllStudents() {
-        List<Student> students = adminService.getAllStudents();
-        return ResponseEntity.ok(students);
-    }
+    	public ResponseEntity<List<Student>> getAllStudents() {
+		List<Student> students = adminService.getAllStudents();
+	        return ResponseEntity.ok(students);
+	}
 	
 	
 	
@@ -185,30 +186,32 @@ public class AdminController {
 
 	@PostMapping("/admin/addStudentToCourse")
 	public ResponseEntity<String> addStudentToCourse(@RequestBody StudentCourseRequest request) {
-        try {
-            adminService.addStudentToCourse(request);
-            return ResponseEntity.ok("Student added to course successfully");
-        } catch (NoSuchElementException e) {
-            return ResponseEntity.status(404).body("Student or course not found");
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("An error occurred");
-        }
-    }
+        	try {
+            		adminService.addStudentToCourse(request);
+            		return ResponseEntity.ok("Student added to course successfully");
+        	    }		 
+		catch (NoSuchElementException e) {
+            		return ResponseEntity.status(404).body("Student or course not found");
+        	} 
+		catch (Exception e) {
+            		return ResponseEntity.status(500).body("An error occurred");
+        	}
+    	}
 
 	 @PostMapping("/admin/removeStudentFromCourse/{student_Id}")
-	    public ResponseEntity<String> removeStudentFromCourse(@PathVariable int student_Id) {
+	 public ResponseEntity<String> removeStudentFromCourse(@PathVariable int student_Id) {
 	        adminService.removeStudentFromCourse(student_Id);
 	        return ResponseEntity.ok("Student removed from course successfully.");
-	    }
+	 }
 
 	 @PostMapping("/admin/sendStudentCredentials/{student_Id}")
-	    public ResponseEntity<String> sendStudentCredentials(@PathVariable int student_Id) {
+	 public ResponseEntity<String> sendStudentCredentials(@PathVariable int student_Id) {
 	        Optional<Student> optionalStudent = studentRepository.findById(student_Id);
 	        if (optionalStudent.isPresent()) {
 	        	adminService.sendStudentLoginCredentials(optionalStudent.get());
-	            return ResponseEntity.ok("Student login credentials sent successfully to." );
+	        	return ResponseEntity.ok("Student login credentials sent successfully to." );
 	        } else {
 	            throw new NoSuchElementException("Student not found with ID: " + student_Id);
 	        }
-	    }
+	}
 }
