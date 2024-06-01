@@ -16,6 +16,7 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Classroom {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int classroom_Id;
@@ -37,6 +38,22 @@ public class Classroom {
 	@JoinTable(name = "classroom_student", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
 	@JsonIgnore
 	private List<Student> students;
+
+	public Classroom() {
+		super();
+		
+	}
+
+	public Classroom(int classroom_Id, String classroom_Name, String classroom_Description, Course course,
+			Teacher teacher, List<Student> students) {
+		super();
+		this.classroom_Id = classroom_Id;
+		this.classroom_Name = classroom_Name;
+		this.classroom_Description = classroom_Description;
+		this.course = course;
+		this.teacher = teacher;
+		this.students = students;
+	}
 
 	public int getClassroom_Id() {
 		return classroom_Id;
@@ -83,22 +100,6 @@ public class Classroom {
 	}
 
 	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
-
-	public Classroom() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Classroom(int classroom_Id, String classroom_Name, String classroom_Description, Course course,
-			Teacher teacher, List<Student> students) {
-		super();
-		this.classroom_Id = classroom_Id;
-		this.classroom_Name = classroom_Name;
-		this.classroom_Description = classroom_Description;
-		this.course = course;
-		this.teacher = teacher;
 		this.students = students;
 	}
 
