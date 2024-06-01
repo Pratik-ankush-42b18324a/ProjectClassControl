@@ -13,33 +13,33 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Submission {
+		
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int submission_Id;
 	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int submission_Id;
-
-    private LocalDateTime submissionDateTime;
-
-    @Column(length=1000000)
-    @Lob
-    private byte[] assignment_SubmissionFile;
-    
-
-    @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
-
-    @ManyToOne
-    @JoinColumn(name = "assignment_id")
-    private Assignment assignment;
-
-    public Submission() {
-	super();
+	private LocalDateTime submissionDateTime;
+	
+	@Column(length=1000000)
+	@Lob
+	private byte[] assignment_SubmissionFile;
 	    
-    }
 
-    public Submission(int submission_Id, LocalDateTime submissionDateTime, byte[] assignment_SubmissionFile,
-			Student student, Assignment assignment) {
+  	@ManyToOne
+   	@JoinColumn(name = "student_id")
+    	private Student student;
+
+    	@ManyToOne
+    	@JoinColumn(name = "assignment_id")
+        private Assignment assignment;
+
+	public Submission() {
+		super();
+		    
+	}
+	
+	public Submission(int submission_Id, LocalDateTime submissionDateTime, byte[] assignment_SubmissionFile,
+				Student student, Assignment assignment) {
 		super();
 		this.submission_Id = submission_Id;
 		this.submissionDateTime = submissionDateTime;
