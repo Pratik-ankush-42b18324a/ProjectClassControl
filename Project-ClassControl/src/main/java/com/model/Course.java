@@ -14,8 +14,8 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Course {
-	@Id
 	
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int course_Id;
 
@@ -25,7 +25,6 @@ public class Course {
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "course", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JsonIgnore
 	private List<Classroom> classroom;
-
 
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "courses", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
