@@ -35,7 +35,7 @@ public class Assignment {
 
 	public Assignment() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Assignment(int assignment_Id, String assignment_Title, LocalDateTime assignment_Deadline
@@ -74,8 +74,6 @@ public class Assignment {
 		this.assignment_Deadline = assignment_Deadline;
 	}
 
-	
-
 	public List<Material> getMaterialEntity() {
 		return material;
 	}
@@ -106,8 +104,6 @@ public class Assignment {
 
 	public void setClassroom(Classroom classroom) {
 		this.classroom = classroom;
-	}
-	
-	
+	}	
 
 }
